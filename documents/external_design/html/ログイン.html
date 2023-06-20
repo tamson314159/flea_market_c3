@@ -1,0 +1,31 @@
+<html>
+	<head>
+		<title>フリマシステム</title>
+	</head>
+	<body>
+		<!-- ブラウザ全体 -->
+		<div style="text-align:center">
+			<!-- ページタイトル -->
+			<h1 style="text-align:center">フリマシステム</h1>
+			<hr style="height:3; background-color:#0000ff;">
+			
+			<!-- ログインコンテンツ部分 -->
+			<div>
+				<!-- 入力フォーム -->
+				<form action="<%=request.getContextPath()%>/login" method="post">
+					<table style="margin:50 auto; align:center" >
+						<tr>
+							<th>ユーザー</th>
+							<td><input type="text" name="userid"></td>
+						</tr>
+						<tr>
+							<th>パスワード</th>
+							<td><input type="password" name="password"></td>
+						</tr>
+					</table>
+					<input type="submit" value="ログイン">
+				</form>
+			</div>
+		</div>
+	</body>
+</html>
