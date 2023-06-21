@@ -6,19 +6,52 @@
 <title>メッセージ作成</title>
 </head>
 <body>
-<h1>フリマシステム(仮)</h1>
+<h1>雑貨フリマシステム</h1>
 <hr>
 <ul><a href="../messagelist.html">メッセージ一覧</a></ul>
 <hr>
-<h2>メッセージ作成</h2>
-<hr>
+
 <br><br>
 <table>
-<tr><th>宛先</th><td><input type="text"name="address"></td></tr>
-<tr><th>件名</th><td><input type="text"name="subject"></td></tr>
-<tr><th>本文</th><td><textarea name="message" rows="7" cols="40"></textarea></td></tr>
-</table>
-<br><br>
-<p><input type="submit" value="送信"></p>
+<form action="">
+		<tr>
+				<td>送信者：</td>
+				<td><input type="text" name="sender" size="50"></input></td>	
+		</tr>
+		<tr>
+				<td>宛先：</td>
+				<td><input type="text" name="address" size="50"></input></td>	
+		</tr>
+		<tr>
+				<td>CC：</td>
+				<td><input type="text" name="㏄" size="50"></input></td>	
+		</tr>
+		<tr>
+				<td>BCC：</td>
+				<td><input type="text" name="bcc" size="50"></input></td>	
+		</tr>
+		<tr>
+				<td>件名：</td>
+				<td><input type="text" name="subject" size="50"></input></td>	
+		</tr>
+		</form>
+		</table>
+		
+		<hr>
+		
+			<table class = "text">
+			<form action="">
+				<tr>
+					<td>本文</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><textarea name="message" rows="30"; cols="100"></textarea></td>
+				</tr>
+				<tr>
+					<td><input type="submit" name="send" value="送信"></td>
+				</tr>
+			</form>
+			</table>
 </body>
 </html>
