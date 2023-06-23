@@ -32,6 +32,7 @@
 
 			<%-- コンテンツ部分 --%>
 			<div id="main" class="container">
+				
 				<%-- 検索フォームのテンプレート --%>
 				<div class="search">
 					<ul>
@@ -86,6 +87,41 @@
 						</dd>
 					</dl>
 				</div>
+				
+				<%-- 登録、変更のテンプレート(登録の画面の際は1列削除してください。) --%>
+				<div class="change">
+					<form action="" method="">
+						<table>
+							<thead>
+								<tr>
+									<td>&nbsp;</td>
+									<td>&lt;&lt;変更前情報&gt;&gt;</td>
+									<td>&lt;&lt;変更後情報&gt;&gt;</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th>見出し</th>
+									<td>変更前の情報</td>
+									<td>変更後の情報</td>
+								</tr>
+								<tr>
+									<th>見出し</th>
+									<td>変更前の情報</td>
+									<td>変更後の情報</td>
+								</tr>
+								<tr>
+									<th>見出し</th>
+									<td>変更前の情報</td>
+									<td>変更後の情報</td>
+								</tr>
+							</tbody>
+						</table>
+						<p><input type="submit" value="変更とか登録"></p>
+					</form>
+				</div>
+				
+				
 			</div>
 
 			<%-- フッター部分 --%>
