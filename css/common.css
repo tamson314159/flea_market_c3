@@ -140,3 +140,14 @@ footer {
 	background-color: #9de2ff;
 	text-align: left
 }
+
+/*
+* 登録、変更
+*/
+.change th {
+	width:150px;
+	background-color: #9de2ff;
+}
+.change td {
+	width:150px;
+}
