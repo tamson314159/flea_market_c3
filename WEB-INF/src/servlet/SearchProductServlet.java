@@ -11,29 +11,38 @@ import javax.servlet.http.HttpServletResponse;
 import bean.*;
 import dao.*;
 
-public class ListProductServlet extends HttpServlet {
+public class SearchProductServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request ,HttpServletResponse response)
 			throws ServletException ,IOException{
 
-		String error="";
-		String cmd ="";
 
+		String error ="";
+		String cmd ="";
 
 		try {
 
-			//DAOオブジェクト宣言
+			// ProductDAOクラスのオブジェクトを生成
 			ProductDAO objDao = new ProductDAO();
 
-			//全検索メソッドを呼び出し
-			ArrayList<Product> productList = objDao.selectAll();
+			// 画面から送信される検索条件を受け取るためのエンコードを設定
+			request.setCharacterEncoding("UTF-8");
 
-			// 取得した書籍情報をproduct_listという名前でリクエストスコープに登録
+			// 画面から送信される検索条件をパラメタで取得
+			String product_name = request.getParameter("product_name");
+
+			String price = request.getParameter("price");
+
+
+			// ProductDAOクラスに定義したsearchメソッドを利用して書籍情報を取得
+			ArrayList<Product> productList = objDao.search(product_name, Integer.parseInt(price));
+
+			// 取得した書籍情報を「book_list」という名前でリクエストスコープに登録
 			request.setAttribute("product_list", productList);
 
-		}catch(IllegalStateException e){
+		}catch(IllegalStateException e) {
 
-			error="DB接続エラーのため、一覧表示できません。";
+			error="DB接続エラーのため検索結果を表示できません。";
 			cmd ="menu";
 
 		}finally {
@@ -49,12 +58,12 @@ public class ListProductServlet extends HttpServlet {
 				request.setAttribute("error", error);
 				request.setAttribute("cmd", cmd);
 
-				// error,jspへフォワード
+				// error.jspへフォワード
 				request.getRequestDispatcher("/view/error.jsp").forward(request,response);
+
 			}
 
 		}
 	}
-
 
 }
