@@ -111,12 +111,12 @@ public class User {
 		this.signup_date = signup_date;
 	}
 
-	public String getUpdate_date() {
+	public String getUpdatemypage_date() {
 		return updatemypage_date;
 	}
 
-	public void setUpdate_date(String update_date) {
-		this.updatemypage_date = update_date;
+	public void setUpdatemypage_date(String updatemypage_date) {
+		this.updatemypage_date = updatemypage_date;
 	}
 
 	public String getSignout_date() {
