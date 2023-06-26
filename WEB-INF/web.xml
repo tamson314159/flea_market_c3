@@ -1,0 +1,349 @@
+<web-app>
+
+	<!-- ログイン機能 -->
+
+	<servlet>
+		<servlet-name>loginMapping</servlet-name>
+		<servlet-class>servlet.LoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>loginMapping</servlet-name>
+		<url-pattern>/login</url-pattern>
+	</servlet-mapping>
+
+	<!-- ログアウト機能 -->
+	<servlet>
+		<servlet-name>logoutMapping</servlet-name>
+		<servlet-class>servlet.LogoutServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>logoutMapping</servlet-name>
+		<url-pattern>/logout</url-pattern>
+	</servlet-mapping>
+
+	<!--メッセージ一覧表示機能 -->
+	<servlet>
+		<servlet-name>listMessageAdminMapping</servlet-name>
+		<servlet-class>servlet.ListMessageAdminServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>listMessageAdminMapping</servlet-name>
+		<url-pattern>/listMessageAdmin</url-pattern>
+	</servlet-mapping>
+
+	<!--メッセージ詳細表示機能 -->
+	<servlet>
+		<servlet-name>detailMessageAdminMapping</servlet-name>
+		<servlet-class>servlet.DetailMessageAdminServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>detailMessageAdminMapping</servlet-name>
+		<url-pattern>/detailMessageAdmin</url-pattern>
+	</servlet-mapping>
+
+	<!-- メッセージ作成機能 -->
+	<servlet>
+		<servlet-name>createMessageAdmin</servlet-name>
+		<servlet-class>servlet.CreateMessageAdminServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>createMessageAdmin</servlet-name>
+		<url-pattern>/createMessageAdmin</url-pattern>
+	</servlet-mapping>
+
+	<!-- 下書き一覧表示機能 -->
+	<servlet>
+		<servlet-name>listDraftAdmin</servlet-name>
+		<servlet-class>servlet.ListDraftAdminServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>listDraftAdmin</servlet-name>
+		<url-pattern>/listDraftAdmin</url-pattern>
+	</servlet-mapping>
+
+
+	<!-- ユーザー一覧機能 -->
+	<servlet>
+		<servlet-name>listUserMapping</servlet-name>
+		<servlet-class>servlet.ListUserServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>listUserMapping</servlet-name>
+		<url-pattern>/listUser</url-pattern>
+	</servlet-mapping>
+
+
+	<!--ユーザー詳細表示機能-->
+	<servlet>
+		<servlet-name>detailUserMapping</servlet-name>
+		<servlet-class>servlet.DetailUserServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>detailUserMapping</servlet-name>
+		<url-pattern>/detailUser</url-pattern>
+	</servlet-mapping>
+
+	<!--出品一覧表示機能-->
+	<servlet>
+		<servlet-name>listProductMapping</servlet-name>
+		<servlet-class>servlet.ListProductServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>listProductMapping</servlet-name>
+		<url-pattern>/listProduct</url-pattern>
+	</servlet-mapping>
+
+	<!--出品詳細表示機能-->
+	<servlet>
+		<servlet-name>detailListingAdminMapping</servlet-name>
+		<servlet-class>servlet.DetailListingAdminServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>detailListingAdminMapping</servlet-name>
+		<url-pattern>/detailListingAdmin</url-pattern>
+	</servlet-mapping>
+
+	<!--売上状況表示機能-->
+	<servlet>
+		<servlet-name>saleMapping</servlet-name>
+		<servlet-class>servlet.SaleServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>saleMapping</servlet-name>
+		<url-pattern>/sale</url-pattern>
+	</servlet-mapping>
+
+	<!--会員登録機能-->
+	<servlet>
+		<servlet-name>signupMemberMapping</servlet-name>
+		<servlet-class>servlet.SignupMemberServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>signupMemberMapping</servlet-name>
+		<url-pattern>/signupMember</url-pattern>
+	</servlet-mapping>
+
+	<!--マイページ表示機能-->
+	<servlet>
+		<servlet-name>mypageMapping</servlet-name>
+		<servlet-class>servlet.MypageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>mypageMapping</servlet-name>
+		<url-pattern>/mypage</url-pattern>
+	</servlet-mapping>
+
+	<!--プロフィール変更機能-->
+	<servlet>
+		<servlet-name>updateMypageMapping</servlet-name>
+		<servlet-class>servlet.UpdateMypageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>updateMypageMapping</servlet-name>
+		<url-pattern>/updateMypage</url-pattern>
+	</servlet-mapping>
+
+
+	<!--商品検索機能-->
+	<servlet>
+		<servlet-name>searchProductMapping</servlet-name>
+		<servlet-class>servlet.SearchProductServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>searchProductMapping</servlet-name>
+		<url-pattern>/searchProduct</url-pattern>
+	</servlet-mapping>
+
+	<!--商品詳細情報表示機能-->
+	<servlet>
+		<servlet-name>detailProductMapping</servlet-name>
+		<servlet-class>servlet.DetailProductServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>detailProductMapping</servlet-name>
+		<url-pattern>/detailProduct</url-pattern>
+	</servlet-mapping>
+
+	<!--購入機能-->
+	<servlet>
+		<servlet-name>purchaseMapping</servlet-name>
+		<servlet-class>servlet.PurchaseServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>purchaseMapping</servlet-name>
+		<url-pattern>/purchase</url-pattern>
+	</servlet-mapping>
+
+	<!--購入時メール送信機能-->
+	<servlet>
+		<servlet-name>sendMailMapping</servlet-name>
+		<servlet-class>servlet.SendMailServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>sendMailMapping</servlet-name>
+		<url-pattern>/sendMail</url-pattern>
+	</servlet-mapping>
+
+	<!--商品登録機能-->
+	<servlet>
+		<servlet-name>insertProductMapping</servlet-name>
+		<servlet-class>servlet.InsertProductServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>insertProductMapping</servlet-name>
+		<url-pattern>/insertProduct</url-pattern>
+	</servlet-mapping>
+
+	<!--発送状況更新機能-->
+	<servlet>
+		<servlet-name>shipmentStatusUpdateMapping</servlet-name>
+		<servlet-class>servlet.ShipmentStatusUpdateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>shipmentStatusUpdateMapping</servlet-name>
+		<url-pattern>/shipmentStatusUpdate</url-pattern>
+	</servlet-mapping>
+
+
+	<!--出品一覧表示機能--><servlet>
+		<servlet-name>listListingMapping</servlet-name>
+		<servlet-class>servlet.ListListingServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>listListingMapping</servlet-name>
+		<url-pattern>/listListing</url-pattern>
+	</servlet-mapping>
+
+	<!--出品詳細情報表示機能-->
+	<servlet>
+		<servlet-name>detailListingMapping</servlet-name>
+		<servlet-class>servlet.DetailListingServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>detailListingMapping</servlet-name>
+		<url-pattern>/detailListing</url-pattern>
+	</servlet-mapping>
+
+	<!--出品商品削除機能-->
+	<servlet>
+		<servlet-name>deleteProductMapping</servlet-name>
+		<servlet-class>servlet.DeleteProductServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>deleteProductMapping</servlet-name>
+		<url-pattern>/deleteProduct</url-pattern>
+	</servlet-mapping>
+
+	<!--出品詳細情報更新機能-->
+	<servlet>
+		<servlet-name>updateProductMapping</servlet-name>
+		<servlet-class>servlet.UpdateProductServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>updateProductMapping</servlet-name>
+		<url-pattern>/updateProduct</url-pattern>
+	</servlet-mapping>
+
+	<!--購入履歴表示機能-->
+	<servlet>
+		<servlet-name>showHistoryOrderedItemMapping</servlet-name>
+		<servlet-class>servlet.ShowHistoryOrderedItemServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>showHistoryOrderedItemMapping</servlet-name>
+		<url-pattern>/showHistoryOrderedItem</url-pattern>
+	</servlet-mapping>
+
+	<!--入金機能-->
+	<servlet>
+		<servlet-name>paymentMapping</servlet-name>
+		<servlet-class>servlet.PaymentServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>paymentMapping</servlet-name>
+		<url-pattern>/payment</url-pattern>
+	</servlet-mapping>
+
+	<!--注文詳細表示機能-->
+	<servlet>
+		<servlet-name>detailOrderMapping</servlet-name>
+		<servlet-class>servlet.DetailOrderServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>detailOrderMapping</servlet-name>
+		<url-pattern>/detailOrder</url-pattern>
+	</servlet-mapping>
+
+	<!--メッセージ一覧表示機能-->
+	<servlet>
+		<servlet-name>listMessageMapping</servlet-name>
+		<servlet-class>servlet.ListMessageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>listMessageMapping</servlet-name>
+		<url-pattern>/listMessage</url-pattern>
+	</servlet-mapping>
+
+	<!--メッセージ詳細表示機能-->
+	<servlet>
+		<servlet-name>detailMessageMapping</servlet-name>
+		<servlet-class>servlet.DetailMessageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>detailMessageMapping</servlet-name>
+		<url-pattern>/detailMessage</url-pattern>
+	</servlet-mapping>
+
+	<!--メッセージ作成機能-->
+	<servlet>
+		<servlet-name>createMessageMapping</servlet-name>
+		<servlet-class>servlet.CreateMessageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>createMessageMapping</servlet-name>
+		<url-pattern>/createMessage</url-pattern>
+	</servlet-mapping>
+
+	<!--下書き一覧表示機能-->
+	<servlet>
+		<servlet-name>listDraftMapping</servlet-name>
+		<servlet-class>servlet.ListDraftServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>listDraftMapping</servlet-name>
+		<url-pattern>/listDraft</url-pattern>
+	</servlet-mapping>
+
+	<!--お気に入り一覧機能-->
+	<servlet>
+		<servlet-name>favoriteListMapping</servlet-name>
+		<servlet-class>servlet.FavoriteListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>/favoriteList</servlet-name>
+		<url-pattern>/graph</url-pattern>
+	</servlet-mapping>
+
+	<!--お気に入り登録機能-->
+	<servlet>
+		<servlet-name>favoriteInsertMapping</servlet-name>
+		<servlet-class>servlet.FavoriteInsertServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>favoriteInsertMapping</servlet-name>
+		<url-pattern>/favoriteInsert</url-pattern>
+	</servlet-mapping>
+
+	<!--お気に入り削除機能-->
+	<servlet>
+		<servlet-name>favoriteDeleteMapping</servlet-name>
+		<servlet-class>servlet.FavoriteDeleteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>favoriteDeleteMapping</servlet-name>
+		<url-pattern>/favoriteDelete</url-pattern>
+	</servlet-mapping>
+
+
+
+</web-app>
