@@ -320,8 +320,8 @@
 		<servlet-class>servlet.FavoriteListServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>/favoriteList</servlet-name>
-		<url-pattern>/graph</url-pattern>
+		<servlet-name>favoriteListMapping</servlet-name>
+		<url-pattern>/favoriteList</url-pattern>
 	</servlet-mapping>
 
 	<!--お気に入り登録機能-->
