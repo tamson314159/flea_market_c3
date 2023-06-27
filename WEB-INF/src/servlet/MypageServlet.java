@@ -15,7 +15,7 @@ import dao.UserDAO;
 
 public class MypageServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//エラーメッセージ用変数
+
 		String error = "";
 		String cmd = "";
 
@@ -33,10 +33,10 @@ public class MypageServlet extends HttpServlet {
 				cmd = "logout";
 			}
 
-			//Userオブジェクトの生成
+			//
 			User mypage = new User();
 
-			//UserDAOクラスをインスタンス化
+			//
 			UserDAO userDao = new UserDAO();
 
 			//マイページ画面に表示する情報を取得するメソッドの呼び出し
