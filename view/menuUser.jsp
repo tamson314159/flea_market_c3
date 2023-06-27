@@ -28,6 +28,7 @@
 			<div id="main" class="container">
 				<ul style="margin-top:20px;">
 					<li><a href="<%=request.getContextPath() %>/listProduct" >商品一覧</a></li>
+					<li><a href="<%=request.getContextPath() %>/listListing">出品一覧</a></li>
 					<li><a href="<%=request.getContextPath() %>/showHistoryOrderedItem">購入履歴</a></li>
 					<li><a href="<%=request.getContextPath() %>/mypage">マイページ</a></li>
 					<li><a href="<%=request.getContextPath() %>/listMessage">メッセージ</a></li>

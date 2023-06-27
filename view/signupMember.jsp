@@ -1,9 +1,10 @@
 <%@page contentType="text/html; charset=UTF-8"%>
-<%@page import="java.text.*, java.util.Date" %>
 
 <%
-DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd(E)");
-String date = dateFormat.format(new Date());
+String error = (String)request.getAttribute("error");
+if (error == null) {
+	error = "";
+}
 %>
 
 <html>
@@ -41,7 +42,7 @@ String date = dateFormat.format(new Date());
 
 				<%-- 登録、変更のテンプレート(登録の画面の際は1列削除してください。) --%>
 				<div class="change">
-					<form action="<%= request.getContextPath() %>/signUpMember" method="post">
+					<form action="<%= request.getContextPath() %>/signupMember" method="post">
 						<table>
 							<tbody>
 								<tr>
@@ -71,8 +72,10 @@ String date = dateFormat.format(new Date());
 							</tbody>
 						</table>
 						<p><input type="submit" value="会員登録"></p>
-						<input type="hidden" name="signup_date" value="<%= date %>">
+						<input type="hidden" name="authority" value="1">
 					</form>
+					<br>
+					<p class="error"><%= error %></p>
 				</div>
 
 			</div>
@@ -82,3 +85,9 @@ String date = dateFormat.format(new Date());
 		</div>
 	</body>
 </html>
+
+<style>
+.error {
+	color:red;
+	}
+</style>
