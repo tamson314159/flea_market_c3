@@ -2,6 +2,6 @@
 
 <header>
 	<div class="container">
-		<h1>システム名（ロゴに差し替える）</h1>
+		<h1><img src="<%= request.getContextPath() %>/images/logo.jpg" alt="サービスのロゴ"></h1>
 	</div>
 </header>
