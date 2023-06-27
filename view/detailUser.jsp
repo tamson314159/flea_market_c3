@@ -57,10 +57,13 @@
 						<dd><%=user.getPhone_number()%></dd>
 						<dt>パスワード</dt>
 						<dd><%=user.getPassword()%></dd>
+						<dt>会員登録日</dt>
+						<dd><%=user.getSignup_date()%></dd>
 						<dt>マイページ更新日</dt>
 						<dd><%=user.getUpdatemypage_date()%></dd>
 						<dt>退会日</dt>
-						<dd><%=user.getSignout_date()%></dd>
+						<dd><%if(user.getSignout_date()!=null){%>
+						<%=user.getSignout_date()%><%} %></dd>
 
 
 					</dl>
