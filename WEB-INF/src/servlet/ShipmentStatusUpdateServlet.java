@@ -12,11 +12,11 @@ import bean.Sale;
 import dao.ProductDAO;
 import dao.SaleDAO;
 
-public class DetailListingServlet extends HttpServlet {
+public class ShipmentStatusUpdateServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// エラーメッセージ用変数
+		// エラーメッセージ用の変数
 		String error = "";
 		String cmd = "";
 
@@ -24,30 +24,26 @@ public class DetailListingServlet extends HttpServlet {
 			// 文字エンコーディングの設定
 			req.setCharacterEncoding("UTF-8");
 
-			// 詳細表示する出品の商品番号の取得
+			// 発送状況更新対象の購入番号の取得
 			int productId = Integer.parseInt(req.getParameter("product_id"));
 
 			// DAO のインスタンス化
-			ProductDAO productDAO = new ProductDAO();
 			SaleDAO saleDAO = new SaleDAO();
 
-			// 商品情報の取得
-			Product product = productDAO.selectByProduct_id(Integer.valueOf(productId).toString());
+			// 購入情報の取得
+			Sale sale = saleDAO.selectAllUser(Integer.valueOf(productId).toString()).get(0);
 
-			// 商品情報のリクエストスコープへの格納
-			req.setAttribute("product", product);
+			// 取引状況の更新
+			sale.setTransaction("3");
 
-			// 商品が取引中または購入済みの場合注文情報を取得する
-			if (product.getTransaction().equals("2") || product.getTransaction().equals("3")) {
-				// 注文情報の取得
-				Sale sale = saleDAO.selectAllUser(Integer.valueOf(productId).toString()).get(0);
+			// 発送状況の更新
+			sale.setDelivery("1");
 
-				// 注文情報のリクエストスコープへの格納
-				req.setAttribute("sale", sale);
-			}
+			// DB の更新
+			saleDAO.update(sale);
 		} catch (IllegalStateException e) {
-			// DB 接続に失敗した場合
-			error = "データベース接続に失敗した為、商品詳細は表示できません。";
+			// DB に接続できなかった場合
+			error = "データベース接続に失敗した為、発送状況の更新ができません。";
 			cmd = "logout";
 		} finally {
 			// エラーメッセージのリクエストスコープへの格納
@@ -56,10 +52,10 @@ public class DetailListingServlet extends HttpServlet {
 
 			// フォワード先の振り分け
 			if (error.equals("")) {
-				// 商品詳細ページへフォワード
-				req.getRequestDispatcher("/view/detailListing.jsp").forward(req, resp);
+				// 出品一覧ページにフォワード
+				req.getRequestDispatcher("/listListing").forward(req, resp);
 			} else {
-				// エラーページへフォワード
+				// エラーページにフォワード
 				req.getRequestDispatcher("/view/error.jsp").forward(req, resp);
 			}
 		}
