@@ -29,14 +29,17 @@ public class DetailProductServlet extends HttpServlet {
 
 			//画面から送信されるproduct_idとcmd情報を受け取ります。
 			product_id = request.getParameter("product_id");
-			cmd = request.getParameter("cmd");;
 
-			//取得した書籍情報を「Product」という名前でリクエストスコープに登録します。
+
+			//SelectByProduct_idメソッドの呼び出し
+			Product = objDao.selectByProduct_id(product_id);
+
+			//取得した商品情報を「Product」という名前でリクエストスコープに登録します。
 			request.setAttribute("Product", Product);
 
 			//書籍一覧画面のISBNリンクをクリック時、DBに接続できない
 			}catch(IllegalStateException e) {
-				error ="DB接続エラーの為、書籍詳細は表示できませんでした。";
+				error ="DB接続エラーの為、商品詳細は表示できませんでした。";
 				cmd = "logout";
 
 			}catch(Exception e) {
@@ -45,12 +48,9 @@ public class DetailProductServlet extends HttpServlet {
 
 			}finally {
 				if(error.equals("")) {
-					//cmd情報の値を判定し、「detail」の場合は「detail.jsp」へフォワードします。
-					if(cmd.equals("detail")) {
-						request.getRequestDispatcher("/view/detail.jsp").forward(request, response);
-					}else if(cmd.equals("update")) {
-						request.getRequestDispatcher("/view/update.jsp").forward(request, response);
-					}
+
+						request.getRequestDispatcher("/view/detailProduct.jsp").forward(request, response);
+
 				}else {
 					request.setAttribute("error",error);
 					request.setAttribute("cmd",cmd);

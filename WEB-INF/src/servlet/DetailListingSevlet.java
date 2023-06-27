@@ -9,8 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import bean.*;
 import dao.*;
+import java.util.*;
 
-public class DetailUserServlet extends HttpServlet {
+public class DetailListingSevlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String error = "";
@@ -18,31 +19,32 @@ public class DetailUserServlet extends HttpServlet {
 
 		try {
 
-			// 画面から送信されるユーザーIDを受け取るためのエンコードを設定
+			// 画面から送信される商品IDを受け取るためのエンコードを設定
 			request.setCharacterEncoding("UTF-8");
 
-			// ユーザーIDのパラメタ取得
-			String userid = request.getParameter("userid");
+			// 商品IDのパラメタ取得
+			String product_id = request.getParameter("product_id");
 
 			// UserDAOをインスタンス化
-			UserDAO objDao = new UserDAO();
+			SaleDAO objDao = new SaleDAO();
 
-			// listUserメソッドの呼び出し
-			User objUser = objDao.listUser(userid);
+			// 取得した情報を格納するArrayList作成
+			ArrayList<Sale> saleList = new ArrayList<Sale>();
+
+			// selectAllAdminメソッドの呼び出し
+			saleList = objDao.selectAllAdmin(product_id);
 
 			// 検索結果をリクエストスコープに登録
-			request.setAttribute("user", objUser);
+			request.setAttribute("Sale", saleList);
 
 		} catch (IllegalStateException e) {
 
-			error = "DB接続エラーのため、ユーザーの詳細情報は表示できません。";
+			error = "DB接続エラーのため、出品商品の詳細情報は表示できません。";
 			cmd = "";
 		} finally {
 
-			//エラーの有無でフォワード先を指定
 			if (error.equals("")) {
-				// detailUser.jspにフォワード
-				request.getRequestDispatcher("/view/detailUser.jsp").forward(request, response);
+				request.getRequestDispatcher("/view/detailListing.jsp").forward(request, response);
 			} else {
 
 				request.setAttribute("error", error);
@@ -50,6 +52,8 @@ public class DetailUserServlet extends HttpServlet {
 				// error.jspにフォワード
 				request.getRequestDispatcher("/view/error.jsp").forward(request, response);
 			}
+
 		}
 	}
+
 }
