@@ -1,7 +1,6 @@
 package dao;
 
 import java.sql.*;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ArrayList;
 
@@ -27,6 +26,51 @@ public class UserDAO {
 			throw new IllegalStateException(e);
 		}
 	}
+
+	//マイページ画面に表示する情報を取得メソッド
+		public User selectByUserid(int userid) {
+
+			Connection con = null;
+			Statement smt = null;
+
+			//return用オブジェクトを生成
+			User user = new User();
+
+			//SQL文
+			//String sql = "SELECT user_id,password,name,nickname,address,phone_number,mail FROM user_info WHERE user_id";
+			String sql ="SELECT user_id,password,name,nickname,address,phone_number,mail FROM user_info WHERE user_id = " + userid;
+
+			try {
+				con = getConnection();
+				smt = con.createStatement();
+
+				//SQL文発行
+				ResultSet rs = smt.executeQuery(sql);
+
+				//rsから各値を取り出してUserオブジェクトにセット、さらにそれをArrayList変数に追加する
+				while(rs.next()) {
+
+					user.setUserid(rs.getInt("user_id"));
+					user.setPassword(rs.getString("password"));
+					user.setName(rs.getString("name"));
+					user.setNickname(rs.getString("nickname"));
+					user.setAddress(rs.getString("address"));
+					user.setPhone_number(rs.getString("phone_number"));
+					user.setMail(rs.getString("mail"));
+				}
+			} catch (Exception e) {
+				throw new IllegalStateException(e);
+			} finally {
+				//リソースの開放
+				if (smt != null) {
+					try {smt.close();} catch (SQLException ignore) {}
+				}
+				if (con != null) {
+					try {con.close();} catch (SQLException ignore) {}
+				}
+			}
+			return user;
+		}
 
 	//ユーザー一覧画面に表示する情報を返すメソッド
 	public ArrayList<User> listUser() {
@@ -80,7 +124,7 @@ public class UserDAO {
 		User user = new User();
 
 		//SQL文
-		String sql = "SELECT * FROM user_info WHERE user_id = '" + userid + "'AND password = '" + password + "'";
+		String sql = "SELECT * FROM user_info WHERE mail = '" + userid + "'AND password = '" + password + "'";
 
 		try {
 
@@ -101,12 +145,12 @@ public class UserDAO {
 				user.setNickname(rs.getString("nickname"));
 				user.setPhone_number(rs.getString("phone_number"));
 
-				Date today1 = rs.getDate("signup_date");
-				String signup_date = today1.toString(); //Date型をString型へキャスト
+				Date date1 = rs.getDate("signup_date");
+				String signup_date = date1.toString(); //Date型をString型へキャスト
 				user.setSignup_date(signup_date);
 
-				Date today2 = rs.getDate("update_date");
-				String update_date = today2.toString(); //Date型をString型へキャスト
+				Date date2 = rs.getDate("update_date");
+				String update_date = date2.toString(); //Date型をString型へキャスト
 				user.setUpdatemypage_date(update_date);
 			}
 
@@ -178,14 +222,14 @@ public class UserDAO {
 		}
 
 		//会員登録処理を行うメソッド
-		public void signupMember(String password, String mail, String authority, String name, String nickname, String address, String phone_number, Date signup_date, Date update_date) {
+		public void signupMember(String password, String mail, String authority, String name, String nickname, String address, String phone_number, String signup_date, String update_date) {
 
 			Connection con = null;
 			Statement smt = null;
 
 			//SQL文
-			String sql = "INSERT INTO user_info (user_id, password, mail, authority, name, nickname, address, phone_number, signup_date, update_date)"
-					+ "VALUES('','" + password + "','" + mail + "','" + authority + "','" + name + "','" + nickname + "','" + address + "','" + phone_number + "','" + signup_date + "','" + update_date + "')";
+			String sql = "INSERT INTO user_info (password, mail, authority, name, nickname, address, phone_number, signup_date, update_date)"
+					+ "VALUES('" + password + "','" + mail + "','" + authority + "','" + name + "','" + nickname + "','" + address + "','" + phone_number + "','" + signup_date + "','" + update_date + "')";
 
 			try {
 				con = getConnection();
@@ -205,6 +249,4 @@ public class UserDAO {
 				}
 			}
 		}
-
-
 }
