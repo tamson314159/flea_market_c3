@@ -1,4 +1,4 @@
-package servlet;
+package test;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -29,15 +29,13 @@ public class SearchProductServlet extends HttpServlet {
 			request.setCharacterEncoding("UTF-8");
 
 			// 画面から送信される検索条件をパラメタで取得
-			String product_id= request.getParameter("product_id");
 			String product_name = request.getParameter("product_name");
 			String kinds = request.getParameter("kinds");
 			String price = request.getParameter("price");
-			String quantity = request.getParameter("quantity");
 
 
 			// ProductDAOクラスに定義したsearchメソッドを利用して書籍情報を取得
-			ArrayList<Product> productList = objDao.search(product_id, product_name, kinds,price,quantity);
+			ArrayList<Product> productList = objDao.search( product_name, kinds, price);
 
 			// 取得した書籍情報を「book_list」という名前でリクエストスコープに登録
 			request.setAttribute("product_list", productList);
@@ -67,6 +65,5 @@ public class SearchProductServlet extends HttpServlet {
 
 		}
 	}
+
 }
-
-
