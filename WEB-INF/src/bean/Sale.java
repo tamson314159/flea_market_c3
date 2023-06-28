@@ -26,13 +26,13 @@ public class Sale {
 	// 取引情報
 	private String transaction;
 	// 出品者ユーザーID
-	private String exhibition_userid;
+	private int exhibition_userid;
 	// 購入者ユーザーID
-	private String purchase_userid;
+	private int purchase_userid;
 	// 購入日
 	private String purchase_date;
 	// 入金情報
-	private String money_recieved;
+	private String money_received;
 	// 発送情報
 	private String delivery;
 
@@ -50,10 +50,10 @@ public class Sale {
 		this.exhibition_date=null;
 		this.update_date=null;
 		this.transaction=null;
-		this.exhibition_userid=null;
-		this.purchase_userid=null;
+		this.exhibition_userid=0;
+		this.purchase_userid=0;
 		this.purchase_date=null;
-		this.money_recieved=null;
+		this.money_received=null;
 		this.delivery=null;
 
 	}
@@ -146,19 +146,19 @@ public class Sale {
 		this.transaction = transaction;
 	}
 
-	public String getExhibition_userid() {
+	public int getExhibition_userid() {
 		return exhibition_userid;
 	}
 
-	public void setExhibition_userid(String exhibition_userid) {
+	public void setExhibition_userid(int exhibition_userid) {
 		this.exhibition_userid = exhibition_userid;
 	}
 
-	public String getPurchase_userid() {
+	public int getPurchase_userid() {
 		return purchase_userid;
 	}
 
-	public void setPurchase_userid(String purchase_userid) {
+	public void setPurchase_userid(int purchase_userid) {
 		this.purchase_userid = purchase_userid;
 	}
 
@@ -170,12 +170,12 @@ public class Sale {
 		this.purchase_date = purchase_date;
 	}
 
-	public String getMoney_recieved() {
-		return money_recieved;
+	public String getMoney_received() {
+		return money_received;
 	}
 
-	public void setMoney_recieved(String money_recieved) {
-		this.money_recieved = money_recieved;
+	public void setMoney_received(String money_received) {
+		this.money_received = money_received;
 	}
 
 	public String getDelivery() {
