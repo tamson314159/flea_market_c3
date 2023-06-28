@@ -114,8 +114,8 @@ public class UserDAO {
 		return user_list;
 	}
 
-	//入力されたユーザーIDとパスワードに合致するユーザー情報を取得するメソッド
-	public User login(String userid, String password) {
+	//入力されたメールアドレスとパスワードに合致するユーザー情報を取得するメソッド
+	public User login(String mail, String password) {
 
 		Connection con = null;
 		Statement smt = null;
@@ -124,7 +124,7 @@ public class UserDAO {
 		User user = new User();
 
 		//SQL文
-		String sql = "SELECT * FROM user_info WHERE mail = '" + userid + "'AND password = '" + password + "'";
+		String sql = "SELECT * FROM user_info WHERE mail = '" + mail + "'AND password = '" + password + "'";
 
 		try {
 
@@ -167,8 +167,54 @@ public class UserDAO {
 		return user;
 	}
 
+	//マイページ情報を更新するメソッド
+	public void update(User user) {
+
+		Connection con = null;
+		Statement smt = null;
+
+		//引数で渡された変更情報を取り出す
+		int userId = user.getUserid();
+		String name = user.getName();
+		String nickname = user.getNickname();
+		String phone_number = user.getPhone_number();
+		String address = user.getAddress();
+		String mail = user.getMail();
+		String password = user.getPassword();
+
+		//SQL文
+		String sql = "UPDATE user_info SET name='" + name
+				+ "',nickname='" + nickname
+				+ "',phone_number='" + phone_number
+				+ "',address='" + address
+				+ "',mail='" + mail
+				+ "',password='"+ password
+				+ "',update_date=CURDATE()"
+				+ " WHERE user_id=" + userId ;
+
+		try {
+			// データベース接続
+			con = UserDAO.getConnection();
+			smt = con.createStatement();
+
+			// DB の更新
+			smt.executeUpdate(sql);
+		} catch (Exception e) {
+			throw new IllegalStateException();
+		} finally {
+			// DB 接続のクローズ
+			if (smt != null) {
+				try {smt.close();} catch (Exception ignore) {}
+			}
+			if (con != null) {
+				try {con.close();} catch (Exception ignore) {}
+			}
+		}
+
+	}
+
 	//指定されたユーザーIDに合致するユーザー情報を取得するメソッド
-		public User listUser(String userid) {
+	public User listUser(String userid) {
 
 			Connection con = null;
 			Statement smt = null;
