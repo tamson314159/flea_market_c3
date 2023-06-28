@@ -33,8 +33,10 @@ public class ShowHistoryOrderedItemServlet extends HttpServlet {
 			// SaleDAOをインスタンス化
 			SaleDAO saleDao = new SaleDAO();
 
+			int user_id = user.getUserid();
+
 			// 購入した商品の詳細情報を取得するメソッドの呼び出し
-			ArrayList<Sale> list = saleDao.selectByUser(user.getUserid());
+			ArrayList<Sale> list = saleDao.selectByUser(user_id);
 
 			// 購入した商品の詳細情報を「sale_list」という名前でリクエストスコープに登録
 			request.setAttribute("sale_list", list);

@@ -32,7 +32,7 @@ public class DetailListingServlet extends HttpServlet {
 			SaleDAO saleDAO = new SaleDAO();
 
 			// 商品情報の取得
-			Product product = productDAO.selectByProduct_id(Integer.valueOf(productId).toString());
+			Product product = productDAO.selectByProduct_id(productId);
 
 			// 商品情報のリクエストスコープへの格納
 			req.setAttribute("product", product);
@@ -40,7 +40,7 @@ public class DetailListingServlet extends HttpServlet {
 			// 商品が取引中または購入済みの場合注文情報を取得する
 			if (product.getTransaction().equals("2") || product.getTransaction().equals("3")) {
 				// 注文情報の取得
-				Sale sale = saleDAO.selectAllUser(Integer.valueOf(productId).toString()).get(0);
+				Sale sale = saleDAO.selectAllUser(productId).get(0);
 
 				// 注文情報のリクエストスコープへの格納
 				req.setAttribute("sale", sale);
