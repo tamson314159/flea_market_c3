@@ -36,7 +36,7 @@
 			<div id="main" class="container">
 				<!-- 入力フォーム -->
 				<form action="<%=request.getContextPath()%>/insertProduct">
-					<input type="hidden" name="transaction" value="出品中">
+					<input type="hidden" name="transaction" value="1">
 					<table class="input-table" align="center">
 						<tr>
 							<td>商品名</td>
