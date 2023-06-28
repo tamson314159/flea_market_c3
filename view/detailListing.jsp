@@ -17,6 +17,7 @@
 	if (product.getTransaction().equals("2") || product.getTransaction().equals("3")) {
 		sale = (Sale) request.getAttribute("sale");
 	}
+
 %>
 
 <html>
