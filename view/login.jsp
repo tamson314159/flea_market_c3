@@ -60,8 +60,8 @@ if(message == null){
 				<%-- 検索フォームのテンプレート --%>
 				<form action ="<%=request.getContextPath() %>/login" method="POST">
 				<div class="search">
-					<p>ユーザー名:<input type="text" name=""></p>
-						<p>パスワード:<input type="password" name=""><p>
+					<p>ユーザー名:<input type="text" name="mail"></p>
+						<p>パスワード:<input type="password" name="password"><p>
 						<br><br>
 						<p><input type="submit" value="ログイン"></p>
 
@@ -71,6 +71,10 @@ if(message == null){
 
 
 			<p class="center"><%=message %></p>
+			<br><br><br>
+
+			<p>はじめてご利用の方</p>
+			<a href="<%=request.getContextPath()%>/view/signupMember.jsp">新規会員登録</a>
 			</div>
 		<!-- フッター部分 -->
 		<%@include file="/common/footer.jsp"%>
