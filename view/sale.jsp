@@ -31,19 +31,10 @@
 				</div>
 			</div>
 		</div>
+
 		<%-- コンテンツ部分 --%>
 		<div id="main" class="container">
-
-			<table class="list table">
-				<tr>
-					<th style="width: 150px">商品番号</th>
-					<th style="width: 150px">商品名</th>
-					<th style="width: 150px">価格</th>
-					<th style="width: 150px">数量</th>
-					<th style="width: 150px">地域</th>
-					<th style="width: 150px">購入日</th>
-				</tr>
-
+			<table class="detail">
 				<%
 					ArrayList<Sale> list = (ArrayList<Sale>) request.getAttribute("sale_list");
 					ArrayList<String> total = new ArrayList<String>();
@@ -52,13 +43,28 @@
 							Sale sales = (Sale) list.get(i);
 							commision += sales.getPrice() / 10;
 				%>
-
 				<tr>
+					<th>商品番号</th>
 					<td><a href="<%=request.getContextPath()%>/detailProduct"><%=sales.getProduct_number()%></a></td>
+				</tr>
+				<tr>
+					<th>商品名</th>
 					<td><a href="<%=request.getContextPath()%>/detailProduct"><%=sales.getProduct_name()%></a></td>
+				</tr>
+				<tr>
+					<th>価格</th>
 					<td><%=sales.getPrice()%></td>
+				</tr>
+				<tr>
+					<th>数量</th>
 					<td><%=sales.getQuantity()%></td>
+				</tr>
+				<tr>
+					<th>地域</th>
 					<td><%=sales.getRegion()%></td>
+				</tr>
+				<tr>
+					<th>購入日</th>
 					<td><%=sales.getPurchase_date()%></td>
 				</tr>
 				<%
@@ -79,6 +85,6 @@
 		</div>
 		<!-- フッター部分 -->
 		<%@ include file="/common/footer.jsp"%>
-		</div>
+	</div>
 </body>
 </html>

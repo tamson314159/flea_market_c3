@@ -30,10 +30,11 @@
 				</div>
 			</div>
 		</div>
+
 		<%-- コンテンツ部分 --%>
 		<div id="main" class="container">
 
-			<table class="list table" id="main">
+			<table class="detail">
 				<%
 					ArrayList<Sale> list = (ArrayList<Sale>) request.getAttribute("sales");
 
@@ -43,7 +44,7 @@
 				%>
 				<tr>
 					<th class="list th" style="width: 150px;">商品番号</th>
-					<td style="width: 150px;"><%=sale.getProduct_number()%></td>
+					<td><%=sale.getProduct_number()%></td>
 				</tr>
 				<tr>
 					<th class="list th">商品名</th>
@@ -102,6 +103,6 @@
 		</div>
 		<!-- フッター部分 -->
 		<%@ include file="/common/footer.jsp"%>
-		</div>
+	</div>
 </body>
 </html>
