@@ -26,7 +26,7 @@
 				<%-- ナビゲーション  --%>
 				<div id="nav">
 					<ul>
-						<li><a href="<%=request.getContextPath()%>/view/menuUser.jsp">[メニュー]</a></li>
+						<li><a href="<%=request.getContextPath()%>/view/template.jsp">[リンク]</a></li>
 					</ul>
 				</div>
 
@@ -44,7 +44,6 @@
 			<div class="search">
 				<ul>
 					<li>商品名<input type="text" name="product_name"></li>
-					<li>種類<input type="text" name="kinds"></li>
 					<li>価格<input type="text" name="price"></li>
 					<li><button>検索</button></li>
 				</ul>
@@ -61,7 +60,7 @@
 							<th>種類</th>
 							<th>価格</th>
 							<th>個数</th>
-
+							<th>購入</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -76,7 +75,7 @@
 						<td><%=product_list.get(i).getKinds()%></td>
 						<td><%=product_list.get(i).getPrice()%></td>
 						<td><%=product_list.get(i).getQuantity()%></td>
-
+						<td><a href="<%=request.getContextPath() %>/purchase?product_id=<%=product_list.get(i).getProduct_id() %>">購入</a></td>
 
 					</tr>
 					<%
