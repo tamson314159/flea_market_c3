@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -15,7 +16,7 @@ import dao.ProductDAO;
 import dao.SaleDAO;
 import util.SendMail;
 
-public class PurchaseServlet {
+public class PurchaseServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -40,11 +41,9 @@ public class PurchaseServlet {
 				// パラメータを取得する
 				product_id = request.getParameter("product_id");
 
-
-
 				ProductDAO proDao = new ProductDAO();
 
-				Product product = proDao.selectByProduct_id(Integer.parseInt(product_id));
+				Product product = proDao.selectByProduct_id(product_id);
 
 				request.setAttribute("Product", product);
 
@@ -100,3 +99,4 @@ public class PurchaseServlet {
 			}
 		}
 }
+
