@@ -5,6 +5,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 import bean.Product;
+import bean.User;
 import dao.ProductDAO;
 
 public class InsertProductServlet extends HttpServlet {
@@ -22,8 +23,10 @@ public class InsertProductServlet extends HttpServlet {
 		String region= "";
 		String remarks = "";
 		String transaction= "";
+		String image = "";
 		int price = 0;
 		int quantity= 0;
+		int user_id = 0;
 
 		try {
 			//productDAOクラスのオブジェクトを生成します。
@@ -43,6 +46,12 @@ public class InsertProductServlet extends HttpServlet {
 			region = request.getParameter("region");
 			remarks = request.getParameter("remarks");
 			transaction = request.getParameter("transaction");
+			// image = request.getPrameter("image");
+
+			// セッションから出品ユーザーIDを受ける
+			HttpSession session = request.getSession();
+			User user = (User) session.getAttribute("user");
+			user_id = user.getUserid();
 
 			//登録画面での未入力チェック
 			if(product_name.equals("")) {
@@ -107,6 +116,8 @@ public class InsertProductServlet extends HttpServlet {
 			product.setRegion(region);
 			product.setRemarks(remarks);
 			product.setTransaction(transaction);
+			product.setImage(image);
+			product.setUser_id(user_id);
 
 			//ProductDAOクラスに定義したinsert()メソッドを利用して、Productオブジェクトに格納された商品データをデータベースに登録します。
 			objDao.insert(product);
