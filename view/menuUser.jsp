@@ -31,7 +31,6 @@
 					<li><a href="<%=request.getContextPath() %>/listListing">出品一覧</a></li>
 					<li><a href="<%=request.getContextPath() %>/showHistoryOrderedItem">購入履歴</a></li>
 					<li><a href="<%=request.getContextPath() %>/mypage">マイページ</a></li>
-					<li><a href="<%=request.getContextPath() %>/listMessage">メッセージ</a></li>
 					<li><a href="<%=request.getContextPath() %>/view/insertProduct.jsp">商品登録</a></li>
 					<li>&nbsp;<!--半角スペース1個分--></li>
 					<li><a href="<%=request.getContextPath() %>/logout">ログアウト</a></li>

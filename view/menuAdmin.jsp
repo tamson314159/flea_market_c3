@@ -29,7 +29,6 @@
 				<ul style="margin-top:20px;">
 					<li><a href="<%=request.getContextPath() %>/sale" >売上状況</a></li>
 					<li><a href="<%=request.getContextPath() %>/listUser">ユーザー一覧</a></li>
-					<li><a href="<%=request.getContextPath() %>/listMessageAdmin">メッセージ一覧</a></li>
 					<li><a href="<%=request.getContextPath() %>/listProduct">出品一覧</a></li>
 					<li>&nbsp;<!--半角スペース1個分--></li>
 					<li><a href="<%=request.getContextPath() %>/logout">ログアウト</a></li>
