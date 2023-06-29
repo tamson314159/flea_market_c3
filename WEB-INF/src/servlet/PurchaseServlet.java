@@ -81,6 +81,10 @@ public class PurchaseServlet extends HttpServlet {
 				SaleDAO saleDAO = new SaleDAO();
 				saleDAO.insert(sale);
 
+				// 商品の取引状況の更新。（本当はproductDAOを使った方がいいかもしれない）
+				sale.setTransaction("2");
+				saleDAO.update(sale);
+
 				mail.sendMail(user,product);
 
 //				// List配列に追加
