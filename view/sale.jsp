@@ -34,54 +34,51 @@
 
 		<%-- コンテンツ部分 --%>
 		<div id="main" class="container">
-			<table class="detail">
+		<%-- 一覧のテンプレート --%>
+			<div class="list">
+				<table>
+					<thead>
+						<tr>
+							<th>商品番号</th>
+							<th>商品名</th>
+							<th>価格</th>
+							<th>数量</th>
+							<th>購入日</th>
+						</tr>
+					</thead>
+					<tbody>
 				<%
 					ArrayList<Sale> list = (ArrayList<Sale>) request.getAttribute("sale_list");
 					ArrayList<String> total = new ArrayList<String>();
 					if (list != null) {
 						for (int i = 0; i < list.size(); i++) {
 							Sale sales = (Sale) list.get(i);
-							commision += sales.getPrice() / 10;
+							commision += sales.getPrice()*sales.getQuantity() / 10;
 				%>
 				<tr>
-					<th>商品番号</th>
-					<td><a href="<%=request.getContextPath()%>/detailProduct"><%=sales.getProduct_number()%></a></td>
-				</tr>
-				<tr>
-					<th>商品名</th>
-					<td><a href="<%=request.getContextPath()%>/detailProduct"><%=sales.getProduct_name()%></a></td>
-				</tr>
-				<tr>
-					<th>価格</th>
-					<td><%=sales.getPrice()%></td>
-				</tr>
-				<tr>
-					<th>数量</th>
-					<td><%=sales.getQuantity()%></td>
-				</tr>
-				<tr>
-					<th>地域</th>
-					<td><%=sales.getRegion()%></td>
-				</tr>
-				<tr>
-					<th>購入日</th>
-					<td><%=sales.getPurchase_date()%></td>
-				</tr>
-				<%
-					}
-					}
-				%>
+						<td><a
+							href="<%=request.getContextPath()%>/detailProduct?product_id=<%=list.get(i).getProduct_number()%>&cmd=detailProduct"><%=list.get(i).getProduct_number()%></a></td>
+						<td><%=list.get(i).getProduct_name()%></td>
+						<td><%=list.get(i).getPrice()%></td>
+						<td><%=list.get(i).getQuantity()%></td>
+						<td><%=list.get(i).getPurchase_date()%></td>
 
-			</table>
+					</tr>
+					<%
+						}
+						}
+					%>
+					</tbody>
+				</table>
 
 			<hr style="position: relative; border-bottom: 2px solid black;">
 
 			<table style="margin-right: 300px">
 				<tr>
-					<th>システム利用料合計</th>
-					<td></td>
+					<td>システム利用料合計:<%=commision %></td>
 				</tr>
 			</table>
+		</div>
 		</div>
 		<!-- フッター部分 -->
 		<%@ include file="/common/footer.jsp"%>
