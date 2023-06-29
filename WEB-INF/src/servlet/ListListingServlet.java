@@ -24,14 +24,15 @@ public class ListListingServlet extends HttpServlet {
 			//セッションからユーザーIDを取得
 			HttpSession session = request.getSession();
 			User user = (User)session.getAttribute("user");
-			int user_id = user.getUserid();
 
 			/** セッション切れの場合エラー **/
-			if (user_id == 0) {
+			if (user == null) {
 				error = "セッション切れの為、出品商品一覧を表示できませんでした。";
-				cmd = "error";
+				cmd = "logout";
 				return;
 			}
+
+			int user_id = user.getUserid();
 
 			//ProductDAOクラスののオブジェクト生成
 			ProductDAO ProductDaoObj = new ProductDAO();
@@ -42,7 +43,7 @@ public class ListListingServlet extends HttpServlet {
 
 		} catch (IllegalStateException e) {
 			error = "DB接続エラーの為、出品商品一覧を表示できませんでした。";
-			cmd = "error";
+			cmd = "logout";
 		} finally {
 			if (error.equals("")) {
 				//エラーが無い場合
