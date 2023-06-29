@@ -85,7 +85,7 @@ public class PurchaseServlet extends HttpServlet {
 				sale.setTransaction("2");
 				saleDAO.update(sale);
 
-				mail.sendMail(user,product);
+				mail.sendMailToSeller(sale);
 
 //				// List配列に追加
 //				list.add(sale);
@@ -111,4 +111,3 @@ public class PurchaseServlet extends HttpServlet {
 			}
 		}
 }
-
