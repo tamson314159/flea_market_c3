@@ -44,7 +44,7 @@ public class SaleDAO {
 			// 検索結果を配列に格納
 			while (rs.next()) {
 				Sale sale = new Sale();
-				sale.setProduct_number(rs.getInt("product_number"));
+				sale.setProduct_number(product_id);
 				//sale.setProduct_id(rs.getInt("product_id"));
 				sale.setProduct_name(rs.getString("product_name"));
 				sale.setKinds(rs.getString("kinds"));
@@ -56,8 +56,8 @@ public class SaleDAO {
 				sale.setUpdate_date(rs.getString("update_date"));
 				sale.setImage(rs.getString("image"));
 				sale.setTransaction(rs.getString("transaction"));
-				sale.setExhibition_userid(rs.getString("user_id"));
-				sale.setPurchase_userid(rs.getString("purchase_userid"));
+				sale.setExhibition_userid(rs.getInt("user_id"));
+				sale.setPurchase_userid(rs.getInt("purchase_user_id"));
 				saleList.add(sale);
 			}
 		} catch (Exception e) {
@@ -156,7 +156,7 @@ public class SaleDAO {
 		// SQL文
 		String sql = "SELECT a.product_name,a.kinds,a.price,a.quantity,a.remarks,a.region,"
 				+ "a.exhibition_date,a.update_date,a.image,a.transaction,a.user_id,"
-				+ "b.purchase_date,b.money_received,b.delivery FROM product a,purchase_info b WHERE" + product_id;
+				+ "b.purchase_date,b.money_received,b.delivery FROM product a,purchase_info b WHERE a.product_id=" + product_id;
 
 		try {
 			con = getConnection();
@@ -167,7 +167,7 @@ public class SaleDAO {
 			// 検索結果を配列に格納
 			while (rs.next()) {
 				Sale sale = new Sale();
-				sale.setProduct_number(rs.getInt("product_number"));
+				sale.setProduct_number(product_id);
 				sale.setProduct_name(rs.getString("product_name"));
 				sale.setKinds(rs.getString("kinds"));
 				sale.setPrice(rs.getInt("price"));
@@ -176,7 +176,7 @@ public class SaleDAO {
 				sale.setRegion(rs.getString("region"));
 				sale.setImage(rs.getString("image"));
 				sale.setTransaction(rs.getString("transaction"));
-				sale.setExhibition_userid(rs.getString("exhibition_userid"));
+				sale.setExhibition_userid(rs.getInt("user_id"));
 				sale.setPurchase_date(rs.getString("purchase_date"));
 				sale.setMoney_received(rs.getString("money_received"));
 				sale.setDelivery(rs.getString("delivery"));
