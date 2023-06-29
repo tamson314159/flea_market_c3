@@ -54,6 +54,8 @@ ArrayList<Product> productList = (ArrayList<Product>)request.getAttribute("list"
 						<%
 						if (productList != null) {
 							for (int i = 0; i < productList.size(); i++) {
+								if(productList.get(i).getQuantity() != 0) {
+
 						%>
 							<tr>
 								<td><a href="<%= request.getContextPath() %>/detailListing?product_id=<%= productList.get(i).getProduct_id() %>&cmd=detail"><%= productList.get(i).getProduct_id() %></a></td>
@@ -63,6 +65,7 @@ ArrayList<Product> productList = (ArrayList<Product>)request.getAttribute("list"
 								<td><%= productList.get(i).getQuantity() %></td>
 							</tr>
 						<%
+								}
 							}
 						}
 						%>
