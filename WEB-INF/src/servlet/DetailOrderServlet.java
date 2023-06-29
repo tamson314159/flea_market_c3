@@ -28,7 +28,9 @@ public class DetailOrderServlet extends HttpServlet {
 			SaleDAO objDao = new SaleDAO();
 
 			// メソッドの呼び出し
-			list = objDao.selectAllbought();
+//			list = objDao.selectAllbought();
+			int productNumber = Integer.parseInt(request.getParameter("product_number"));
+			list = objDao.selectAllbought(productNumber);
 
 			// 取得した売上情報を「sales」という名前でリクエストスコープに登録
 			request.setAttribute("sales", list);

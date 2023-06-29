@@ -20,7 +20,7 @@ public class PurchaseServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-			String product_id = "";
+			int product_id = 0;
 			String error = "";
 			String cmd = "";
 
@@ -39,7 +39,7 @@ public class PurchaseServlet extends HttpServlet {
 				}
 
 				// パラメータを取得する
-				product_id = request.getParameter("product_id");
+				product_id = Integer.parseInt(request.getParameter("product_id"));
 
 				ProductDAO proDao = new ProductDAO();
 
@@ -65,20 +65,28 @@ public class PurchaseServlet extends HttpServlet {
 				sale.setExhibition_userid(product.getUser_id());
 				sale.setPurchase_userid(user.getUserid());
 
-				//セッションからList配列を取得する
-				ArrayList<Sale> list = (ArrayList<Sale>) session.getAttribute("sale_list");
+				sale.setMoney_received("0");
+				sale.setDelivery("0");
+//				//セッションからList配列を取得する
+//				ArrayList<Sale> list = (ArrayList<Sale>) session.getAttribute("sale_list");
+//
+//				// 取得出来なかった場合と、listがnullの場合
+//				if (list == null) {
+//					list = new ArrayList<Sale>();
+//				}
 
-				// 取得出来なかった場合と、listがnullの場合
-				if (list == null) {
-					list = new ArrayList<Sale>();
-				}
+				// カート機能廃止
+
+				// 購入
+				SaleDAO saleDAO = new SaleDAO();
+				saleDAO.insert(sale);
 
 				mail.sendMail(user,product);
 
-				// List配列に追加
-				list.add(sale);
-				// セッションスコープに登録
-				session.setAttribute("sale_list", list);
+//				// List配列に追加
+//				list.add(sale);
+//				// セッションスコープに登録
+//				session.setAttribute("sale_list", list);
 
 			} catch (IllegalStateException e) {
 				error = "DB接続エラーの為、カートに追加は出来ません。";

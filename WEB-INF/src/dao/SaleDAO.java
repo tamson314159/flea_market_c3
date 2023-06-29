@@ -92,7 +92,8 @@ public class SaleDAO {
 			// SQL文
 			String sql = "SELECT a.product_id,a.product_name,a.kinds,a.price,a.quantity,a.remarks,a.region,"
 					+ "a.exhibition_date,a.update_date,a.image,a.transaction,a.user_id,"
-					+ "b.purchase_user_id,b.purchase_date,b.money_received,b.delivery FROM product a,purchase_info b WHERE a.product_id= " +product_id;
+					+ "b.purchase_user_id,b.purchase_date,b.money_received,b.delivery "
+					+ "FROM product a INNER JOIN purchase_info b ON a.product_id=b.product_number WHERE a.product_id= " +product_id;
 
 			try {
 
@@ -106,7 +107,7 @@ public class SaleDAO {
 				while (rs.next()) {
 					Sale sale = new Sale();
 
-					sale.setProduct_number(rs.getInt(product_id));
+					sale.setProduct_number(rs.getInt("product_id"));
 					sale.setProduct_name(rs.getString("product_name"));
 					sale.setKinds(rs.getString("kinds"));
 					sale.setPrice(rs.getInt("price"));
@@ -202,6 +203,46 @@ public class SaleDAO {
 	}
 
 	// 購入ユーザー側
+		// 購入記録を追加するメソッド(No. 18)
+		public void insert(Sale sale) {
+			// DB 接続用オブジェクト
+			Connection con = null;
+			Statement smt = null;
+
+			// SQL 文
+			String sql = "INSERT INTO purchase_info(product_number, purchase_user_id, purchase_date, money_received, delivery) VALUES("
+					+ sale.getProduct_number() + ", "
+					+ sale.getPurchase_userid() + ", "
+					+ "CURDATE(), "
+					+ "'" + sale.getMoney_received() + "', "
+					+ "'" + sale.getDelivery() + "')";
+
+			try {
+				// DB 接続用オブジェクトのインスタンス化
+				con = getConnection();
+				smt = con.createStatement();
+
+				// DB へ購入情報の挿入
+				smt.executeUpdate(sql);
+			} catch (Exception e) {
+				throw new IllegalStateException(e);
+			} finally {
+				// リソースの開放
+				if (smt != null) {
+					try {
+						smt.close();
+					} catch (SQLException ignore) {
+					}
+				}
+				if (con != null) {
+					try {
+						con.close();
+					} catch (SQLException ignore) {
+					}
+				}
+			}
+		}
+
 		// purchase_infoテーブルから指定ユーザーの条件に合致する購入履歴情報を取得するメソッド(No,26
 		// ShowHistoryOrderedItemServlet)
 		public ArrayList<Sale> selectByUser(int user_id) {
@@ -260,7 +301,7 @@ public class SaleDAO {
 					+ " SET a.product_name='" + sale.getProduct_name() + "',a.kinds='" + sale.getKinds() + "',a.quantity='"
 					+ sale.getQuantity() + "',a.price='" + sale.getPrice() + "',a.remarks='" + sale.getRemarks()
 					+ "',a.region='" + sale.getRegion() + "',a.image='" + sale.getImage() + "',a.transaction ='"
-					+ sale.getTransaction() + "',b.delivery='" + sale.getDelivery() + "' WHERE a.product_id='"
+					+ sale.getTransaction() + "', b.money_received='" + sale.getMoney_received() + "',b.delivery='" + sale.getDelivery() + "' WHERE a.product_id='"
 					+ sale.getProduct_number() + "'";
 			// 変数宣言
 			Connection con = null;

@@ -23,7 +23,7 @@ public class DetailListingSevlet extends HttpServlet {
 			request.setCharacterEncoding("UTF-8");
 
 			// 商品IDのパラメタ取得
-			String product_id = request.getParameter("product_id");
+			int product_id = Integer.parseInt(request.getParameter("product_id"));
 
 			// UserDAOをインスタンス化
 			SaleDAO objDao = new SaleDAO();

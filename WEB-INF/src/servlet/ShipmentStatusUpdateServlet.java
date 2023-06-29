@@ -31,7 +31,7 @@ public class ShipmentStatusUpdateServlet extends HttpServlet {
 			SaleDAO saleDAO = new SaleDAO();
 
 			// 購入情報の取得
-			Sale sale = saleDAO.selectAllUser(Integer.valueOf(productId).toString()).get(0);
+			Sale sale = saleDAO.selectAllUser(productId).get(0);
 
 			// 取引状況の更新
 			sale.setTransaction("3");

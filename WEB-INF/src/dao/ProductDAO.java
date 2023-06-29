@@ -25,7 +25,7 @@ public class ProductDAO {
 	}
 
 	// 引数で渡したuser_idに対応した商品の一覧情報を表示するメソッド
-	public ArrayList<Product> selectAll_user(String user_id) {
+	public ArrayList<Product> selectAll_user(int user_id) {
 
 		Connection con = null;
 		Statement smt = null;
@@ -173,7 +173,7 @@ public class ProductDAO {
 	}
 
 	// 「productDAO.java」ファイルにデータベースから指定された商品データを検索しProductオブジェクトに格納するインスタンスメソッド
-	public Product selectByProduct_id(String product_id) {
+	public Product selectByProduct_id(int product_id) {
 		// 変数宣言
 		Connection con = null;
 		Statement smt = null;
@@ -231,7 +231,7 @@ public class ProductDAO {
 	}
 
 	// 「productDAO.java」ファイルにデータベースから指定された商品データを削除するインスタンスメソッド「delete」を定義します。
-	public void delete(String product_id) {
+	public void delete(int product_id) {
 		// 変数宣言
 		Connection con = null;
 		Statement smt = null;

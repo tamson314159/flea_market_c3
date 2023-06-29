@@ -72,18 +72,6 @@ public class InsertProductServlet extends HttpServlet {
 				return;
 			}
 
-			if(region.equals("")) {
-				error = "地域名が未入力の為、商品登録処理は行えませんでした。";
-				cmd = "list";
-				return;
-			}
-
-			if(remarks.equals("")) {
-				error = "備考が未入力の為、商品登録処理は行えませんでした。";
-				cmd = "list";
-				return;
-			}
-
 			if(strPrice.equals("")) {
 				error = "価格が未入力の為、商品登録処理は行えませんでした。";
 				cmd = "list";
@@ -134,7 +122,7 @@ public class InsertProductServlet extends HttpServlet {
 		}finally {
 			if(error.equals("")) {
 				//「listListing.jsp」へフォワードします。
-				request.getRequestDispatcher("/view/listListing.jsp").forward(request, response);
+				request.getRequestDispatcher("/listListing").forward(request, response);
 			}else {
 				request.setAttribute("error", error);
 				request.setAttribute("cmd", cmd);

@@ -23,7 +23,7 @@ public class DeleteProductServlet extends HttpServlet {
 			ProductDAO ProductDaoObj = new ProductDAO();
 
 			//一覧画面や詳細画面から送られる商品番号を取得
-			String product_id = request.getParameter("product_id");
+			int product_id = Integer.parseInt(request.getParameter("product_id"));
 
 			/** 存在チェック **/
 			product = ProductDaoObj.selectByProduct_id(product_id);

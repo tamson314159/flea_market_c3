@@ -24,10 +24,10 @@ public class ListListingServlet extends HttpServlet {
 			//セッションからユーザーIDを取得
 			HttpSession session = request.getSession();
 			User user = (User)session.getAttribute("user");
-			String user_id = String.valueOf(user.getUserid()); //int型からString型へキャスト
+			int user_id = user.getUserid();
 
 			/** セッション切れの場合エラー **/
-			if (user_id == null) {
+			if (user_id == 0) {
 				error = "セッション切れの為、出品商品一覧を表示できませんでした。";
 				cmd = "error";
 				return;

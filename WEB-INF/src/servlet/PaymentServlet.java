@@ -29,7 +29,7 @@ public class PaymentServlet extends HttpServlet {
 			SaleDAO saleDAO = new SaleDAO();
 
 			// 入金対象の購入情報を取得
-			Sale sale = saleDAO.selectAllUser(Integer.valueOf(productId).toString()).get(0);
+			Sale sale = saleDAO.selectAllUser(productId).get(0);
 
 			// 入金情報の更新
 			sale.setMoney_received("1");
