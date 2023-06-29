@@ -41,7 +41,7 @@
 					<div id="nav">
 						<ul>
 							<li><a href="<%= request.getContextPath() %>/view/menuUser.jsp">[メニュー]</a></li>
-							<li><a href="<%= request.getContextPath() %>/listListng">[出品一覧]</a></li>
+							<li><a href="<%= request.getContextPath() %>/listListing">[出品一覧]</a></li>
 						</ul>
 					</div>
 

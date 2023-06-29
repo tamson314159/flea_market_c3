@@ -49,7 +49,7 @@
 						Product product = (Product)list.get(i);
 						%>
 						<tr>
-							<td><a href="<%=request.getContextPath() %>/detailListingAdmin?product_id=<%=product.getProduct_id()%>&cmd=detail"><%=product.getProduct_id()%></a></td>
+							<td><a href="<%=request.getContextPath() %>/detailListingAdmin?product_id=<%=product.getProduct_id()%>"><%=product.getProduct_id()%></a></td>
 							<td><%= product.getKinds() %></td>
 							<td><%= product.getProduct_name() %></td>
 							<td><%= product.getPrice() %></td>

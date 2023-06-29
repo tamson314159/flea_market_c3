@@ -24,7 +24,7 @@ ArrayList<Product> productList = (ArrayList<Product>)request.getAttribute("list"
 					<%-- ナビゲーション  --%>
 					<div id="nav">
 						<ul>
-							<li><a href ="<%=request.getContextPath()%>/view/menu.jsp" >[メニュー]</a></li>
+							<li><a href ="<%=request.getContextPath()%>/view/menuUser.jsp" >[メニュー]</a></li>
 						</ul>
 					</div>
 
@@ -48,7 +48,6 @@ ArrayList<Product> productList = (ArrayList<Product>)request.getAttribute("list"
 								<th>種類</th>
 								<th>価格</th>
 								<th>個数</th>
-								<th colspan="2">変更/削除</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -62,8 +61,6 @@ ArrayList<Product> productList = (ArrayList<Product>)request.getAttribute("list"
 								<td><%= productList.get(i).getKinds() %></td>
 								<td><%= productList.get(i).getPrice() %></td>
 								<td><%= productList.get(i).getQuantity() %></td>
-								<td><a href="<%= request.getContextPath() %>/updateProduct?product_id=<%= productList.get(i).getProduct_id() %>&cmd=update">変更</a></td>
-								<td><a href="<%= request.getContextPath() %>/deleteProduct?product_id=<%= productList.get(i).getProduct_id() %>">削除</a></td>
 							</tr>
 						<%
 							}

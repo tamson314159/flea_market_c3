@@ -56,8 +56,7 @@
 							commision += sales.getPrice()*sales.getQuantity() / 10;
 				%>
 				<tr>
-						<td><a
-							href="<%=request.getContextPath()%>/detailProduct?product_id=<%=list.get(i).getProduct_number()%>&cmd=detailProduct"><%=list.get(i).getProduct_number()%></a></td>
+						<td><%=list.get(i).getProduct_number()%></a></td>
 						<td><%=list.get(i).getProduct_name()%></td>
 						<td><%=list.get(i).getPrice()%></td>
 						<td><%=list.get(i).getQuantity()%></td>

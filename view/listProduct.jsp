@@ -26,7 +26,7 @@
 				<%-- ナビゲーション  --%>
 				<div id="nav">
 					<ul>
-						<li><a href="<%=request.getContextPath()%>/view/template.jsp">[リンク]</a></li>
+						<li><a href="<%=request.getContextPath()%>/view/menuUser.jsp">[メニュー]</a></li>
 					</ul>
 				</div>
 

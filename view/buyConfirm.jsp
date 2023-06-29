@@ -25,7 +25,7 @@ Product product = (Product)request.getAttribute("Product");
 					<div id="nav">
 						<ul>
 							<li><a href ="<%=request.getContextPath()%>/view/menuUser.jsp" >[メニュー]</a></li>
-							<li><a href ="<%=request.getContextPath()%>/view/showHistoryOrderedItem.jsp" >[購入履歴]</a></li>
+							<li><a href ="<%=request.getContextPath()%>/showHistoryOrderedItem" >[購入履歴]</a></li>
 						</ul>
 					</div>
 
