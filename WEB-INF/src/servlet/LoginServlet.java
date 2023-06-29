@@ -19,12 +19,12 @@ public class LoginServlet extends HttpServlet {
 
 
 		// userid,passwordのパラメタ取得(ユーザーIDはメールアドレス)
-		String userid = request.getParameter("userid");
+		String mail = request.getParameter("mail");
 		String password =request.getParameter("password");
 
 		//UserDAOをインスタンス化し、メソッドを呼び出す
 		UserDAO objDao = new UserDAO();
-		User user = objDao.login(userid,password);
+		User user = objDao.login(mail,password);
 
 		//User情報取得の有無でフォワード先を判定
 
@@ -45,7 +45,7 @@ public class LoginServlet extends HttpServlet {
 
 		//クッキーに入力情報のuseridとpasswordを登録
 		//ユーザー用クッキーの生成
-		Cookie userCookie = new Cookie("userid",user.getMail());
+		Cookie userCookie = new Cookie("mail",user.getMail());
 		userCookie.setMaxAge(60*60*24*5);
 		response.addCookie(userCookie);
 		//パスワード用クッキーの生成
@@ -54,7 +54,7 @@ public class LoginServlet extends HttpServlet {
 		response.addCookie(passCookie);
 
 		//権限でフォワード先を指定
-		if(user.getAuthority().equals("1")) {
+		if(user.getAuthority().equals("2")) {
 			//menuAdmin.jspにフォワード
 			request.getRequestDispatcher("/view/menuAdmin.jsp").forward(request, response);
 		}else {
