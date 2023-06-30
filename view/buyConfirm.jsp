@@ -7,7 +7,7 @@ Product product = (Product)request.getAttribute("Product");
 %>
 <html>
 	<head>
-		<title>テンプレート</title>
+		<title>購入品確認</title>
 		<link rel="stylesheet"  href="<%=request.getContextPath()%>/css/common.css">
 	</head>
 

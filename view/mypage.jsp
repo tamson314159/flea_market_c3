@@ -67,7 +67,6 @@
 							</tr>
 						</tbody>
 					</table>
-					<p><input type="submit" value="変更"></p>
 				</form>
 			</div>
 		</div>

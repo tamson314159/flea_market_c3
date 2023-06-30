@@ -69,7 +69,7 @@ String money_received = "";
 									}
 							%>
 								<tr>
-									<td><a href="<%= request.getContextPath() %>/detailOrder?product_number=<%= list.get(i).getProduct_number() %>&cmd=detail"><%= list.get(i).getProduct_number() %></a></td>
+									<td><%= list.get(i).getProduct_number() %></td>
 									<td><%= list.get(i).getProduct_name() %></td>
 									<td><%= list.get(i).getPrice() %></td>
 									<td><%= list.get(i).getQuantity() %></td>

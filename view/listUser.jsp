@@ -57,7 +57,7 @@
 						<tbody>
 							<% for (User user : userList) { %>
 								<tr>
-									<td><a href="<%= request.getContextPath() %>/detailUser?userid=<%= user.getUserid() %>"><%= user.getUserid() %></a></td>
+									<td><%= user.getUserid() %></td>
 									<td><%= user.getName() %></td>
 									<td><%= user.getAddress() %></td>
 									<td><%= user.getMail() %></td>
