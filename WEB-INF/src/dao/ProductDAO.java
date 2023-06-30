@@ -93,7 +93,7 @@ public class ProductDAO {
 			smt = con.createStatement();
 
 			// SQL文を文字列として定義します。
-			String sql = "SELECT product_id,product_name,kinds,price,quantity FROM product ORDER BY product_id";
+			String sql = "SELECT product_id,product_name,kinds,price,quantity,transaction FROM product ORDER BY product_id";
 
 			// Statementオブジェクトの、executeQuery（）メソッドを利用して、SQL文を発行し結果セットを取得します。
 			ResultSet rs = smt.executeQuery(sql);
@@ -106,6 +106,7 @@ public class ProductDAO {
 				products.setKinds(rs.getString("kinds"));
 				products.setPrice(rs.getInt("price"));
 				products.setQuantity(rs.getInt("quantity"));
+				products.setTransaction(rs.getString("transaction"));
 				productList.add(products);
 			}
 
