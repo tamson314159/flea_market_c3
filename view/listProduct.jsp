@@ -39,16 +39,6 @@
 
 		<%-- コンテンツ部分 --%>
 		<div id="main" class="container">
-			<%-- 検索フォーム --%>
-			<form action="<%=request.getContextPath() %>/searchProduct">
-			<div class="search">
-				<ul>
-					<li>商品名<input type="text" name="product_name"></li>
-					<li>価格<input type="text" name="price"></li>
-					<li><button>検索</button></li>
-				</ul>
-			</div>
-			</form>
 
 			<%-- 一覧のテンプレート --%>
 			<div class="list">
@@ -67,6 +57,7 @@
 						<%
 						if (product_list != null) {
 							for (int i = 0; i < product_list.size(); i++) {
+								if (product_list.get(i).getQuantity() != 0) {
 					%>
 					<tr>
 						<td><a
@@ -79,7 +70,8 @@
 
 					</tr>
 					<%
-						}
+								}
+							}
 						}
 					%>
 					</tbody>
