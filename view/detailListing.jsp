@@ -90,7 +90,7 @@
 							} else if (product.getTransaction().equals("2")) {
 								transaction = "取引中";
 							} else if (product.getTransaction().equals("3")) {
-								transaction = "購入済み";
+								transaction = "発送済み";
 							}
 						%>
 						<dd><%= transaction %></dd>
