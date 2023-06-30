@@ -57,7 +57,7 @@
 						<%
 						if (product_list != null) {
 							for (int i = 0; i < product_list.size(); i++) {
-								if (product_list.get(i).getQuantity() != 0) {
+								if (product_list.get(i).getTransaction().equals("1")) {
 					%>
 					<tr>
 						<td><a
